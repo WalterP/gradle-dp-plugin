@@ -1,0 +1,38 @@
+plugins {
+    id 'groovy-gradle-plugin'
+    id 'groovy'
+    id 'java-gradle-plugin'
+
+}
+
+group 'com.vpontus.gradle'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly gradleApi()
+    compileOnly localGroovy()
+    implementation('io.spring.gradle:dependency-management-plugin:1.0.12.RELEASE')
+    testImplementation('org.junit.jupiter:junit-jupiter-api:5.8.1')
+    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.8.1')
+}
+
+
+gradlePlugin {
+    plugins {
+        simplePlugin {
+            id = 'com.vpontus.gradle.custom-plugin'
+            implementationClass = 'com.vpontus.gradle.CustomGradlePlugin'
+        }
+    }
+}
+
+
+//test {
+//    useJunitPlatform()
+//}
+
+
