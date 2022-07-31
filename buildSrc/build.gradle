@@ -10,13 +10,21 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    gradlePluginPortal()
 }
 
 dependencies {
     compileOnly gradleApi()
     compileOnly localGroovy()
     implementation('io.spring.gradle:dependency-management-plugin:1.0.12.RELEASE')
+    implementation('gradle.plugin.net.nemerosa:versioning:3.0.0')
+
     testImplementation('org.junit.jupiter:junit-jupiter-api:5.8.1')
+    testImplementation gradleTestKit()
+    testImplementation localGroovy()
+
+
+
     testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.8.1')
 }
 
@@ -31,8 +39,7 @@ gradlePlugin {
 }
 
 
-//test {
-//    useJunitPlatform()
-//}
-
+test {
+    useJUnitPlatform()
+}
 

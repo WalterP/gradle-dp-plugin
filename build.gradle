@@ -12,6 +12,7 @@ repositories {
 }
 
 dependencies {
+
     compileOnly gradleApi()
     compileOnly localGroovy()
     implementation 'org.springframework:spring-context'
@@ -30,4 +31,16 @@ testPlugin {
 
 }
 
+jar {
+    manifest {
+        attributes(
+                'SCM': project.versioning.scm,
+                'Display': project.versioning.info.display
+        )
+    }
+}
 
+jar.doLast {
+    println project.versioning.scm
+
+}

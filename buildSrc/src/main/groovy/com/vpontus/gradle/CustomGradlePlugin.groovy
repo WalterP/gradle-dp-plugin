@@ -1,9 +1,10 @@
 package com.vpontus.gradle
 
 import com.vpontus.gradle.action.DependencyManagementPluginAction
+
 import com.vpontus.gradle.action.PluginApplicationAction
+import com.vpontus.gradle.action.VersioningPluginAction
 import com.vpontus.gradle.dsl.TestPluginExtension
-import org.gradle.api.DomainObjectCollection
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -40,7 +41,10 @@ class CustomGradlePlugin implements Plugin<Project> {
     }
 
     private List<PluginApplicationAction> configureActions() {
-        return List.of(new DependencyManagementPluginAction())
+        return List.of(
+                new DependencyManagementPluginAction(),
+                new VersioningPluginAction()
+        )
     }
 
 
